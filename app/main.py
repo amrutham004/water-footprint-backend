@@ -1,4 +1,5 @@
 # app/main.py
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from typing import Optional, List
@@ -8,6 +9,14 @@ from .ml import predict_water_usage
 from sqlmodel import select
 
 app = FastAPI(title="Water Footprint API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://waterfootprintcalc.netlify.app"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.on_event("startup")
 def on_startup():
