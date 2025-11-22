@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+sqlalchemy
+aiosqlite
+pydantic
+pandas
+joblib
+scikit-learn
